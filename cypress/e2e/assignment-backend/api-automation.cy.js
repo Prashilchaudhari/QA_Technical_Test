@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('API testing', function () {
+describe('Automating API calls', function () {
 
     it('verify the status code for LIST USERS', function () {
         cy.request({
@@ -32,7 +32,6 @@ describe('API testing', function () {
 
     })
 
-    //https://reqres.in/api/users/23
     it('verify the status code for POST request', function () {
         cy.request({
             url: "https://reqres.in/api/users",
