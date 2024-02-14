@@ -1,53 +1,58 @@
 /// <reference types="cypress" />
 
-describe('Automating practice test scenarios', function () {
+describe('Automating practice Test Login Page scenarios', ()=> {
 
-    it('TC_001 Login with valid credentials', function () {
+    it('TC_001 Login with valid credentials', ()=> {
         cy.visit('https://practicetestautomation.com/practice/')
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type("student");
         cy.get('input[name="password"]').type("Password123");
         cy.get('[id="submit"]').click();
-        cy.get('[class="post-title"]').should('have.text','Logged In Successfully')
-        cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').should('have.text','Log out')
+        cy.url().should('include','practicetestautomation.com/logged-in-successfully/');
+        cy.get('[class="post-title"]').should('have.text','Logged In Successfully');
+        cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').should('have.text','Log out');
 
     })
 
-    it('TC_002 Login with invalid credentials', function () {
+    it('TC_002 Login with invalid credentials', ()=> {
         cy.visit('https://practicetestautomation.com/practice/')
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
-        cy.get('input[name="username"]').type("Student");
-        cy.get('input[name="password"]').type("Password125");
+        cy.get('input[name="username"]').type("MyStudent");
+        cy.get('input[name="password"]').type("Password@125");
         cy.get('[id="submit"]').click();
+        cy.get('[id="error"]').should('exist');
         cy.get('[id="error"]').should('have.text','Your username is invalid!')
 
     })
-    it('TC_003 Login with invalid username', function () {
+    it('TC_003 Login with invalid username', ()=> {
         cy.visit('https://practicetestautomation.com/practice/')
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
-        cy.get('input[name="username"]').type("Student");
+        cy.get('input[name="username"]').type("MyStudent");
         cy.get('input[name="password"]').type("Password123");
         cy.get('[id="submit"]').click();
+        cy.get('[id="error"]').should('exist');
         cy.get('[id="error"]').should('have.text','Your username is invalid!')
 
     })
 
-    it('TC_004 Login with invalid password', function () {
+    it('TC_004 Login with INVALID PASSWORD', ()=> {
         cy.visit('https://practicetestautomation.com/practice/')
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type("student");
-        cy.get('input[name="password"]').type("Password125");
+        cy.get('input[name="password"]').type("Password@125");
         cy.get('[id="submit"]').click();
+        cy.get('[id="error"]').should('exist');
         cy.get('[id="error"]').should('have.text','Your password is invalid!')
 
     })
 
-    it('TC_005 Login with empty credentials', function () {
+    it('TC_005 Login with EMPTY credentials', ()=> {
         cy.visit('https://practicetestautomation.com/practice/')
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type(" ");
         cy.get('input[name="password"]').type(" ");
         cy.get('[id="submit"]').click();
+        cy.get('[id="error"]').should('exist');
         cy.get('[id="error"]').should('have.text','Your username is invalid!')
 
     })
