@@ -2,7 +2,7 @@
 
 describe('Automating practice Test Login Page scenarios', ()=> {
 
-    it('TC_001 Login with valid credentials', ()=> {
+    it('TC_001 Login with VALID CREDENTIALS', ()=> {
         cy.visit('https://practicetestautomation.com/practice/')
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type("student");
@@ -24,7 +24,7 @@ describe('Automating practice Test Login Page scenarios', ()=> {
         cy.get('[id="error"]').should('have.text','Your username is invalid!')
 
     })
-    it('TC_003 Login with INVALID USERNAME', ()=> {
+    it('TC_003 Login with INVALID USERNAME and valid password', ()=> {
         cy.visit('https://practicetestautomation.com/practice/')
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type("MyStudent");
@@ -35,7 +35,7 @@ describe('Automating practice Test Login Page scenarios', ()=> {
 
     })
 
-    it('TC_004 Login with INVALID PASSWORD', ()=> {
+    it('TC_004 Login with valid username and INVALID PASSWORD', ()=> {
         cy.visit('https://practicetestautomation.com/practice/')
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type("student");
