@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-describe('Automating API calls', function () {
+describe('Automating API calls', ()=> {
 
-    it('verify the status code for LIST USERS', function () {
+    it('TC_006 Verify the status code for LIST USERS', ()=> {
         cy.request({
             url: "https://reqres.in/api/users?page=2",
             method: "GET"
@@ -12,7 +12,7 @@ describe('Automating API calls', function () {
 
     })
 
-    it('verify the status code for SINGLE USER', function () {
+    it('TC_007 Verify the status code for SINGLE USER', ()=> {
         cy.request({
             url: "https://reqres.in/api/users/2",
             method: "GET"
@@ -22,7 +22,7 @@ describe('Automating API calls', function () {
 
     })
 
-    it('verify the status code for SINGLE USER NOT FOUND', function () {
+    it('TC_008 Verify the status code for SINGLE USER NOT FOUND', ()=> {
         cy.request({
             url: "https://reqres.in/api/users/23",
             method: "GET"
@@ -32,7 +32,7 @@ describe('Automating API calls', function () {
 
     })
 
-    it('verify the status code for POST request', function () {
+    it('TC_009 Verify the status code for POST request', ()=> {
         cy.request({
             url: "https://reqres.in/api/users",
             method: "POST",
@@ -45,15 +45,14 @@ describe('Automating API calls', function () {
             expect(response.status).to.eq(201)
         })
 
-
     })
 
-    it('verify the status code for PUT request', function () {
+    it('TC_010 Verify the status code for PUT request', ()=> {
         cy.request({
             method: "PUT",
             url: "https://reqres.in/api/users/2",
             body: {
-                "name": "John",
+                "name": "morpheus",
                 "job": "Tester"
             }
         }).then(function (response) {
@@ -62,7 +61,7 @@ describe('Automating API calls', function () {
         })
     })
 
-    it('verify the status code for DELETE request', function () {
+    it('TC_011 Verify the status code for DELETE request', ()=> {
         cy.request({
             method: "DELETE",
             url: "https://reqres.in/api/users/2",
@@ -73,7 +72,7 @@ describe('Automating API calls', function () {
     })
 
 
-    it('verify the status code for REGISTER SUCCESSFUL', function () {
+    it('TC_012 Verify the status code for REGISTER SUCCESSFUL', ()=> {
         cy.request({
             url: "https://reqres.in/api/register",
             method: "POST",
@@ -89,7 +88,7 @@ describe('Automating API calls', function () {
 
     })
 
-    it('verify the status code for REGISTER UNSUCCESSFUL', function () {
+    it('TC_013 Verify the status code for REGISTER UNSUCCESSFUL', ()=> {
         cy.request({
             url: "https://reqres.in/api/register",
             method: "POST",
@@ -104,7 +103,7 @@ describe('Automating API calls', function () {
 
     })
 
-    it('verify the status code for LOGIN SUCCESSFUL', function () {
+    it('TC_014 Verify the status code for LOGIN SUCCESSFUL', ()=> {
         cy.request({
             url: "https://reqres.in/api/login",
             method: "POST",
@@ -117,10 +116,9 @@ describe('Automating API calls', function () {
             expect(response.status).to.eq(200)
         })
 
-
     })
 
-    it('verify the status code for LOGIN UNSUCCESSFUL', function () {
+    it('TC_015 Verify the status code for LOGIN UNSUCCESSFUL', ()=> {
         cy.request({
             url: "https://reqres.in/api/login",
             method: "POST",
@@ -135,7 +133,7 @@ describe('Automating API calls', function () {
 
     })
 
-    it('verify the status code for DELAYED RESPONSE', function () {
+    it('TC_016 Verify the status code for DELAYED RESPONSE', ()=> {
         cy.request({
             url: "https://reqres.in/api/users?delay=3",
             method: "GET"
@@ -143,7 +141,7 @@ describe('Automating API calls', function () {
             expect(response.status).to.eq(200)
         })
 
-    })
+})
     
 })
 
