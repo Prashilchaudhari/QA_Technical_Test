@@ -1,10 +1,12 @@
 /// <reference types="cypress" />
 
 describe('Automating practice Test Login Page scenarios', ()=> {
-
-    it('TC_001 Login with VALID CREDENTIALS', ()=> {
-        cy.visit('https://practicetestautomation.com/practice/')
+    beforeEach(()=>{
+        cy.visit('https://practicetestautomation.com/practice/');
         cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
+    })
+    
+    it('TC_001 Login with VALID CREDENTIALS', ()=> {
         cy.get('input[name="username"]').type("student");
         cy.get('input[name="password"]').type("Password123");
         cy.get('[id="submit"]').click();
@@ -15,8 +17,6 @@ describe('Automating practice Test Login Page scenarios', ()=> {
     })
 
     it('TC_002 Login with INVALID CREDENTIALS', ()=> {
-        cy.visit('https://practicetestautomation.com/practice/')
-        cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type("MyStudent");
         cy.get('input[name="password"]').type("Password@125");
         cy.get('[id="submit"]').click();
@@ -25,8 +25,6 @@ describe('Automating practice Test Login Page scenarios', ()=> {
 
     })
     it('TC_003 Login with INVALID USERNAME and valid password', ()=> {
-        cy.visit('https://practicetestautomation.com/practice/')
-        cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type("MyStudent");
         cy.get('input[name="password"]').type("Password123");
         cy.get('[id="submit"]').click();
@@ -36,8 +34,6 @@ describe('Automating practice Test Login Page scenarios', ()=> {
     })
 
     it('TC_004 Login with valid username and INVALID PASSWORD', ()=> {
-        cy.visit('https://practicetestautomation.com/practice/')
-        cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type("student");
         cy.get('input[name="password"]').type("Password@125");
         cy.get('[id="submit"]').click();
@@ -47,8 +43,6 @@ describe('Automating practice Test Login Page scenarios', ()=> {
     })
 
     it('TC_005 Login with EMPTY CREDENTIALS', ()=> {
-        cy.visit('https://practicetestautomation.com/practice/')
-        cy.get('[href="https://practicetestautomation.com/practice-test-login/"]').click();
         cy.get('input[name="username"]').type(" ");
         cy.get('input[name="password"]').type(" ");
         cy.get('[id="submit"]').click();
