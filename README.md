@@ -8,8 +8,8 @@ Before running the tests, ensure that you have the following installed:
 
 - Node.js
 - npm (Node Package Manager)
-- cypress.io 
-
+- cypress.io
+  
 Use following commands to install the above prerequisities:
 		npm init -y
 		npm install cypress
